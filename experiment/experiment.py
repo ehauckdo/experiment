@@ -137,9 +137,9 @@ def parse_args(args):
     usage = "usage: %prog [options]"
     parser = optparse.OptionParser(usage=usage)
     parser.add_option('-i', action="store", type="string", dest="filename",
-        help="OSM input file", default=None)
+        help="OSM input file", default="data/sumidaku.osm")
     parser.add_option('-m', action="store", type="string", dest="model",
-        help="Model trained on cities", default=None)
+        help="Model trained on cities", default="classifier/Tokyo.hdf5")
     parser.add_option('-d', action="store", type="int", dest="density",
         help="Maximum initial density per cell for population", default=10)
     parser.add_option('-a', action="store", type="float", dest="minarea",
