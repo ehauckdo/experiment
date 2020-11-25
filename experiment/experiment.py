@@ -284,21 +284,17 @@ def main():
     ##########################
     # Run evolution
     ##########################
-    #evo.get_highest_error(chrom, chrom_idx, neigh_idx, maximum_buildings, areas)
-
-
     pop = evo.initialize_pop_ME(chrom, chrom_idx, neigh_idx, areas,
                              max_buildings=maximum_buildings, pop_size=100)
-
 
     evo.generation_ME(pop, chrom_idx, neigh_idx, areas,
                      max_buildings=maximum_buildings, generations=501)
 
-    top_individuals = evo.top_individuals_ME(pop)
-
     ##########################
     # Parse individuals into osm files
     ##########################
+    top_individuals = evo.top_individuals_ME(pop)
+
     pop_range = 10
     accuracies = [[[] for i in range(pop_range)] for j in range(pop_range)]
     log("Starting evaluation process...")
@@ -330,15 +326,12 @@ def main():
             accuracies[i][j].append(acc)
             file1.write("{}\n".format(acc))
 
-
     file1.close()
     for i in range(len(accuracies)):
         for j in range(len(accuracies[i])):
             print("Accuracies for [{}][{}]: {}".format(i,j, accuracies[i][j]))
 
-
     log("Experiment finished.\n\n")
-
 
 if __name__ == '__main__':
     main()
